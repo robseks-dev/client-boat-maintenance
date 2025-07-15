@@ -80,7 +80,7 @@ export const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const verify = async () => {
-      const token = Cookies.get("token_boat");
+      const token = Cookies.get("token_boat_maintenance");
 
       if (token) {
         try {
