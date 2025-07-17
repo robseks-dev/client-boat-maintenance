@@ -24,9 +24,9 @@ const Sidebar = () => {
       <div className="flex justify-end sm:hidden p-2">
         <X onClick={handleOpen} className="size-6" />
       </div>
-      <div className="h-[10vh] p-2">
+      <div className="w-72 h-[10vh] p-2">
         <NavLink to="/platform">
-          <img src={logo} alt="size-full object-cover" />
+          {/* <img src={logo} alt="size-full object-cover" /> */}
         </NavLink>
       </div>
       <div className="p-5 overflow-y-auto">
