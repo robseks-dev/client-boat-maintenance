@@ -110,7 +110,7 @@ const Sidebar = () => {
                 </li>
               </ul>
             </li>
-            <li className="hidden sm:flex flex-col gap-2">
+            <li className="flex flex-col gap-2">
               <div className="group flex items-center justify-between rounded-sm p-2 cursor-default">
                 <div className="flex items-center gap-3">
                   <Cog strokeWidth={1.5} className="size-4" />
@@ -124,7 +124,7 @@ const Sidebar = () => {
                 >
                   Agregar repuesto
                 </li>
-                <li className="px-9 hover:text-primary">
+                <li className="hidden sm:block px-9 hover:text-primary">
                   <NavLink to="spares" className="cursor-default">
                     Inventario
                   </NavLink>
@@ -158,7 +158,7 @@ const Sidebar = () => {
                   onClick={() =>
                     openModalWithContent(CreateReport, "Generar reporte de inspeccion")
                   }
-                  className="px-9 hover:text-primary"
+                  className="hidden sm:block px-9 hover:text-primary"
                 >
                   Generar reporte
                 </li>

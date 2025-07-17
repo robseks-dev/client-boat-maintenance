@@ -69,7 +69,7 @@ const Statistics = () => {
   }, []);
 
   return (
-    <div className="h-full overflow-y-auto">
+    <div className="hidden sm:block h-full overflow-y-auto">
       <div className="flex flex-col gap-3 h-full">
         <p className="text-gray-400">Estadisticas consumos</p>
         <div className="flex h-full">
