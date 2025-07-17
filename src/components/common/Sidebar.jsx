@@ -26,7 +26,7 @@ const Sidebar = () => {
       </div>
       <div className="w-72 h-[10vh] p-2">
         <NavLink to="/platform">
-          {/* <img src={logo} alt="size-full object-cover" /> */}
+          <img src={logo} alt="size-full object-cover" />
         </NavLink>
       </div>
       <div className="p-5 overflow-y-auto">
