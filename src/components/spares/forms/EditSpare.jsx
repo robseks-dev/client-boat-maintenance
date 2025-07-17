@@ -4,15 +4,16 @@ import { useForm } from "react-hook-form";
 import { useFetch } from "../../../hooks/useFetch";
 
 import Input from "../../inputs/Input";
+import TextArea from "../../inputs/TextArea";
 
-const EditBoat = ({ props }) => {
+const EditSpare = ({ props }) => {
   const { handleSubmit, control } = useForm();
   const { fetch } = useFetch();
   const { openToastWithContent, closeModal } = useContext(Context);
 
   const onSubmit = async (data) => {
-    const result = await fetch(`/boats/${props.id}`, "PUT", data);
-    if (result) openToastWithContent("s", "Lancha editada con éxito");
+    const result = await fetch(`/spares/${props.id}`, "PUT", data);
+    if (result) openToastWithContent("s", "Repuesto editado con éxito");
     if (result) closeModal();
   };
 
@@ -22,7 +23,7 @@ const EditBoat = ({ props }) => {
         <div className="w-full sm:w-64">
           <Input
             label="Nombre"
-            placeholder={"Nombre de la lancha"}
+            placeholder={"Nombre del repuesto/elemento"}
             defaultValue={props.name}
             name="name"
             control={control}
@@ -31,11 +32,45 @@ const EditBoat = ({ props }) => {
         </div>
         <div className="w-full sm:w-64">
           <Input
-            label="Matricula"
+            label="Tipo"
             type="text"
-            placeholder={"ABC-456"}
-            defaultValue={props.enrollment}
-            name="enrollment"
+            placeholder={"Ej: Motores, Electricidad, Casco"}
+            defaultValue={props.type}
+            name="type"
+            control={control}
+            rules={{ required: { value: true, message: "Campo requerido" } }}
+          />
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-5">
+        <div className="w-full">
+          <TextArea
+            label="Descripcion"
+            placeholder={"Incluye especificaciones técnicas, material, color, etc."}
+            name="description"
+            defaultValue={props.description}
+            control={control}
+          />
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-5">
+        <div className="w-full sm:w-64">
+          <Input
+            label="Ubicacion"
+            placeholder={"Ubicacion en bodega"}
+            type="text"
+            defaultValue={props.location}
+            name="location"
+            control={control}
+          />
+        </div>
+        <div className="w-full sm:w-64">
+          <Input
+            label="Cantidad"
+            placeholder={"Cantidad en bodega"}
+            type="number"
+            defaultValue={props.quantity}
+            name="quantity"
             control={control}
             rules={{ required: { value: true, message: "Campo requerido" } }}
           />
@@ -44,72 +79,22 @@ const EditBoat = ({ props }) => {
       <div className="grid grid-cols-2 gap-5">
         <div className="w-full sm:w-64">
           <Input
-            label="Puerto de matricula"
-            placeholder={"Puerto de matricula"}
+            label="Valor"
+            placeholder={"Valor del repuesto"}
             type="number"
-            defaultValue={props.port_registry}
-            name="port_registry"
+            defaultValue={props.value}
+            name="value"
             control={control}
-            rules={{ required: { value: true, message: "Campo requerido" } }}
           />
         </div>
         <div className="w-full sm:w-64">
           <Input
-            label="Arqueo bruto"
-            placeholder={"Arqueo bruto"}
-            defaultValue={props.arching}
-            name="arching"
+            label="Fecha de ingreso"
+            placeholder={"Fecha de ingreso"}
+            type="date"
+            defaultValue={props.entry_date.split("T")[0]}
+            name="entry_date"
             control={control}
-            rules={{ required: { value: true, message: "Campo requerido" } }}
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-5">
-        <div className="w-full sm:w-64">
-          <Input
-            label="Distintivo de llamada"
-            placeholder={"Distintivo de llamada"}
-            type="text"
-            defaultValue={props.distinctive}
-            name="distinctive"
-            control={control}
-            rules={{ required: { value: true, message: "Campo requerido" } }}
-          />
-        </div>
-        <div className="w-full sm:w-64">
-          <Input
-            label="Numero de OMI/NIC"
-            placeholder={"Numero de OMI/NIC"}
-            type="number"
-            defaultValue={props.omi_number}
-            name="omi_number"
-            control={control}
-            uppercase
-            rules={{ required: { value: true, message: "Campo requerido" } }}
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-5">
-        <div className="w-full sm:w-64">
-          <Input
-            label="Catalogacion"
-            placeholder={"Catalogacion"}
-            type="text"
-            defaultValue={props.cataloging}
-            name="cataloging"
-            control={control}
-            rules={{ required: { value: true, message: "Campo requerido" } }}
-          />
-        </div>
-        <div className="w-full sm:w-64">
-          <Input
-            label="Eslora"
-            placeholder={"Eslora"}
-            type="number"
-            defaultValue={props.length}
-            name="length"
-            control={control}
-            uppercase
             rules={{ required: { value: true, message: "Campo requerido" } }}
           />
         </div>
@@ -117,21 +102,21 @@ const EditBoat = ({ props }) => {
       <div className="grid grid-cols-1 gap-5">
         <div className="w-full">
           <Input
-            label="Fecha de construccion"
-            placeholder={"Fecha de construccion"}
-            type="date"
-            defaultValue={props.date.split("T")[0]}
-            name="date"
+            label="Estado"
+            placeholder={"Activo, descontinuado, en pedido, etc."}
+            type="text"
+            defaultValue={props.status}
+            name="status"
             control={control}
             rules={{ required: { value: true, message: "Campo requerido" } }}
           />
         </div>
       </div>
       <button className="w-fit bg-primary text-white px-3 py-2 rounded-md hover:brightness-90">
-        Editar lancha
+        Editar repuesto
       </button>
     </form>
   );
 };
 
-export default EditBoat;
+export default EditSpare;

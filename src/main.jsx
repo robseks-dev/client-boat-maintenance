@@ -16,6 +16,8 @@ import CreatePeriodicity from "./components/maintenance/forms/CreatePeriodicity"
 import Boats from "./components/boats/tables/Boats";
 import Parts from "./components/parts/tables/Parts";
 
+import Spares from "./components/spares/tables/Spares";
+
 import BoatForm from "./components/inspection/forms/BoatForm";
 import PassengerForm from "./components/inspection/forms/PassengerForm";
 import AccidentForm from "./components/inspection/forms/AccidentForm";
@@ -77,6 +79,15 @@ const router = createBrowserRouter([
               {
                 path: "create",
                 element: <CreateConsumption />,
+              },
+            ],
+          },
+          {
+            path: "spares",
+            children: [
+              {
+                index: true,
+                element: <Spares />,
               },
             ],
           },

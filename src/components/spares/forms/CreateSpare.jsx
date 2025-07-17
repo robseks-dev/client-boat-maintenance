@@ -4,16 +4,18 @@ import { useForm } from "react-hook-form";
 import { useFetch } from "../../../hooks/useFetch";
 
 import Input from "../../inputs/Input";
+import TextArea from "../../inputs/TextArea";
 
-const CreateBoat = () => {
-  const { handleSubmit, control, reset } = useForm();
+const CreateSpare = () => {
+  const { handleSubmit, control, reset, setValue } = useForm();
   const { fetch } = useFetch();
   const { openToastWithContent } = useContext(Context);
 
   const onSubmit = async (data) => {
-    const result = await fetch("/boats", "POST", data);
-    if (result) openToastWithContent("s", "Lancha creada con éxito");
+    const result = await fetch("/spares", "POST", data);
+    if (result) openToastWithContent("s", "Repuesto creado con éxito");
     if (result) reset();
+    if (result) setValue("description", "");
   };
 
   return (
@@ -22,7 +24,7 @@ const CreateBoat = () => {
         <div className="w-full sm:w-64">
           <Input
             label="Nombre"
-            placeholder={"Nombre de la lancha"}
+            placeholder={"Nombre del repuesto/elemento"}
             defaultValue=""
             name="name"
             control={control}
@@ -31,11 +33,44 @@ const CreateBoat = () => {
         </div>
         <div className="w-full sm:w-64">
           <Input
-            label="Matricula"
+            label="Tipo"
             type="text"
-            placeholder={"ABC-456"}
+            placeholder={"Ej: Motores, Electricidad, Casco"}
             defaultValue=""
-            name="enrollment"
+            name="type"
+            control={control}
+            rules={{ required: { value: true, message: "Campo requerido" } }}
+          />
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-5">
+        <div className="w-full">
+          <TextArea
+            label="Descripcion"
+            placeholder={"Incluye especificaciones técnicas, material, color, etc."}
+            name="description"
+            control={control}
+          />
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-5">
+        <div className="w-full sm:w-64">
+          <Input
+            label="Ubicacion"
+            placeholder={"Ubicacion en bodega"}
+            type="text"
+            defaultValue=""
+            name="location"
+            control={control}
+          />
+        </div>
+        <div className="w-full sm:w-64">
+          <Input
+            label="Cantidad"
+            placeholder={"Cantidad en bodega"}
+            type="number"
+            defaultValue=""
+            name="quantity"
             control={control}
             rules={{ required: { value: true, message: "Campo requerido" } }}
           />
@@ -44,72 +79,22 @@ const CreateBoat = () => {
       <div className="grid grid-cols-2 gap-5">
         <div className="w-full sm:w-64">
           <Input
-            label="Puerto de matricula"
-            placeholder={"Puerto de matricula"}
+            label="Valor"
+            placeholder={"Valor del repuesto"}
             type="number"
             defaultValue=""
-            name="port_registry"
+            name="value"
             control={control}
-            rules={{ required: { value: true, message: "Campo requerido" } }}
           />
         </div>
         <div className="w-full sm:w-64">
           <Input
-            label="Arqueo bruto"
-            placeholder={"Arqueo bruto"}
+            label="Fecha de ingreso"
+            placeholder={"Fecha de ingreso"}
+            type="date"
             defaultValue=""
-            name="arching"
+            name="entry_date"
             control={control}
-            rules={{ required: { value: true, message: "Campo requerido" } }}
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-5">
-        <div className="w-full sm:w-64">
-          <Input
-            label="Distintivo de llamada"
-            placeholder={"Distintivo de llamada"}
-            type="text"
-            defaultValue=""
-            name="distinctive"
-            control={control}
-            rules={{ required: { value: true, message: "Campo requerido" } }}
-          />
-        </div>
-        <div className="w-full sm:w-64">
-          <Input
-            label="Numero de OMI/NIC"
-            placeholder={"Numero de OMI/NIC"}
-            type="number"
-            defaultValue=""
-            name="omi_number"
-            control={control}
-            uppercase
-            rules={{ required: { value: true, message: "Campo requerido" } }}
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-5">
-        <div className="w-full sm:w-64">
-          <Input
-            label="Catalogacion"
-            placeholder={"Catalogacion"}
-            type="text"
-            defaultValue=""
-            name="cataloging"
-            control={control}
-            rules={{ required: { value: true, message: "Campo requerido" } }}
-          />
-        </div>
-        <div className="w-full sm:w-64">
-          <Input
-            label="Eslora"
-            placeholder={"Eslora"}
-            type="number"
-            defaultValue=""
-            name="length"
-            control={control}
-            uppercase
             rules={{ required: { value: true, message: "Campo requerido" } }}
           />
         </div>
@@ -117,21 +102,21 @@ const CreateBoat = () => {
       <div className="grid grid-cols-1 gap-5">
         <div className="w-full">
           <Input
-            label="Fecha de construccion"
-            placeholder={"Fecha de construccion"}
-            type="date"
+            label="Estado"
+            placeholder={"Activo, descontinuado, en pedido, etc."}
+            type="text"
             defaultValue=""
-            name="date"
+            name="status"
             control={control}
             rules={{ required: { value: true, message: "Campo requerido" } }}
           />
         </div>
       </div>
       <button className="w-fit bg-primary text-white px-3 py-2 rounded-md hover:brightness-90">
-        Crear lancha
+        Agregar repuesto
       </button>
     </form>
   );
 };
 
-export default CreateBoat;
+export default CreateSpare;

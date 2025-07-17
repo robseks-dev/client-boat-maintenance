@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { Context } from "../context/Context";
 import { NavLink } from "react-router";
-import { ChevronDown, Sailboat, Component, Wrench, Fuel, FileText, X } from "lucide-react";
+import { ChevronDown, Sailboat, Component, Wrench, Fuel, Cog, FileText, X } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 
 import CreateBoat from "../boats/forms/CreateBoat";
 import CreatePart from "../parts/forms/CreatePart";
 import CreateInvoice from "../invoices/forms/CreateInvoice";
+import CreateSpare from "../spares/forms/CreateSpare";
+import CreateReport from "../inspection/forms/CreateReport";
 
 const Sidebar = () => {
   const { openModalWithContent, isOpen, handleOpen } = useContext(Context);
@@ -15,7 +17,9 @@ const Sidebar = () => {
     <div
       className={`absolute sm:relative ${
         isOpen ? "translate-x-0" : "-translate-x-full"
-      } w-72 h-full sm:size-full left-full bg-white ${isOpen && "shadow"} z-10 sm:z-0 animation`}
+      } flex flex-col justify-start sm:justify-between w-72 h-full sm:size-full left-full bg-white ${
+        isOpen && "shadow"
+      } z-10 sm:z-0 animation`}
     >
       <div className="flex justify-end sm:hidden p-2">
         <X onClick={handleOpen} className="size-6" />
@@ -23,7 +27,7 @@ const Sidebar = () => {
       <div className="h-[10vh] p-2">
         <NavLink to="/platform">{/* <img src={logo} alt="size-full object-cover" /> */}</NavLink>
       </div>
-      <div className="p-5">
+      <div className="p-5 overflow-y-auto">
         <div className="flex flex-col gap-3 py-5">
           <p className="text-gray-500">Lanchas</p>
           <ul className="flex flex-col gap-3">
@@ -107,6 +111,27 @@ const Sidebar = () => {
             <li className="flex flex-col gap-2">
               <div className="group flex items-center justify-between rounded-sm p-2 cursor-default">
                 <div className="flex items-center gap-3">
+                  <Cog strokeWidth={1.5} className="size-4" />
+                  <span>Repuestos</span>
+                </div>
+              </div>
+              <ul className="flex flex-col gap-3 text-gray-500 cursor-default">
+                <li
+                  className="px-9 hover:text-primary"
+                  onClick={() => openModalWithContent(CreateSpare, "Agregar repuesto")}
+                >
+                  Agregar repuesto
+                </li>
+                <li className="px-9 hover:text-primary">
+                  <NavLink to="spares" className="cursor-default">
+                    Inventario
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+            <li className="flex flex-col gap-2">
+              <div className="group flex items-center justify-between rounded-sm p-2 cursor-default">
+                <div className="flex items-center gap-3">
                   <FileText strokeWidth={1.5} className="size-4" />
                   <span>Inspeccion</span>
                 </div>
@@ -126,6 +151,12 @@ const Sidebar = () => {
                   <NavLink to="inspection/accident" className="cursor-default">
                     Accidentes/incidentes
                   </NavLink>
+                </li>
+                <li
+                  onClick={() => openModalWithContent(CreateReport, "Generar reporte de inspeccion")}
+                  className="px-9 hover:text-primary"
+                >
+                  Generar reporte
                 </li>
               </ul>
             </li>

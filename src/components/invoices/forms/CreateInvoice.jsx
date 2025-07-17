@@ -32,9 +32,6 @@ const CreateInvoice = () => {
     const url = URL.createObjectURL(blob);
 
     window.open(url, "_blank");
-
-    /* if (result) openToastWithContent("s", "Parte creada con éxito");
-    if (result) reset(); */
   };
 
   const handleChange = async (value) => {

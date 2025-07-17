@@ -14,62 +14,76 @@ const PassengerForm = () => {
 
     const dataForm = [
       {
+        title: "Embarque de Pasajeros: listado de operación y verificación",
         description:
           "Una vez atraca la embarcación se baja el Ayudante del bote para hacer recepción de Pasajeros.",
         value: data["1"],
       },
       {
+        title: "Embarque de Pasajeros: listado de operación y verificación",
         description:
           "El Piloto al momento del ingreso de las personas se encarga de realizar el conteo de los Pasajeros.",
         value: data["2"],
       },
       {
+        title: "Embarque de Pasajeros: listado de operación y verificación",
         description:
           "Una vez todo el personal a bordo de la embarcación, el Piloto Ayudante procede a entregar los chalecos y a dar las indicaciones de seguridad a tener en cuenta como no caminar ni lanzarse al agua mientras los motores estén encendidos.",
         value: data["3"],
       },
       {
+        title: "Embarque de Pasajeros: listado de operación y verificación",
         description: "Zarpa la embarcación.",
         value: data["4"],
       },
       {
+        title: "Embarque de Pasajeros: listado de operación y verificación",
         description: "Fin de la maniobra.",
         value: data["5"],
       },
       {
+        title: "Desembarque de Pasajeros: listado de operación y verificación",
         description: "Se realiza el atraque de la embarcación.",
         value: data["6"],
       },
       {
+        title: "Desembarque de Pasajeros: listado de operación y verificación",
         description: "Se quitan los chalecos a los Pasajeros",
         value: data["7"],
       },
       {
+        title: "Desembarque de Pasajeros: listado de operación y verificación",
         description: "El Ayudante se baja y ayuda a realizar el desembarque de los Pasajeros.",
         value: data["8"],
       },
       {
+        title: "Desembarque de Pasajeros: listado de operación y verificación",
         description: "Fin de la maniobra.",
         value: data["9"],
       },
       {
+        title: "Transbordo de Pasajeros: listado de operación y verificación",
         description:
           "Piloto Informa a las autoridades, se informa al personal de la maniobra se pide calmay manteniendo el control de la maniobra",
         value: data["10"],
       },
       {
+        title: "Transbordo de Pasajeros: listado de operación y verificación",
         description: "Se le da prioridad a los niños y ancianos.",
         value: data["11"],
       },
       {
+        title: "Transbordo de Pasajeros: listado de operación y verificación",
         description: "Realiza conteo de Pasajeros",
         value: data["12"],
       },
       {
+        title: "Transbordo de Pasajeros: listado de operación y verificación",
         description: "Verifica el uso del chaleco",
         value: data["13"],
       },
       {
+        title: "Transbordo de Pasajeros: listado de operación y verificación",
         description:
           "Las indicaciones de seguridad a tener en cuenta como no caminar ni lanzarse al aguamientras los motores estén encendidos.",
         value: data["14"],
