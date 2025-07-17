@@ -25,7 +25,9 @@ const Sidebar = () => {
         <X onClick={handleOpen} className="size-6" />
       </div>
       <div className="h-[10vh] p-2">
-        <NavLink to="/platform">{/* <img src={logo} alt="size-full object-cover" /> */}</NavLink>
+        <NavLink to="/platform">
+          <img src={logo} alt="size-full object-cover" />
+        </NavLink>
       </div>
       <div className="p-5 overflow-y-auto">
         <div className="flex flex-col gap-3 py-5">
@@ -153,7 +155,9 @@ const Sidebar = () => {
                   </NavLink>
                 </li>
                 <li
-                  onClick={() => openModalWithContent(CreateReport, "Generar reporte de inspeccion")}
+                  onClick={() =>
+                    openModalWithContent(CreateReport, "Generar reporte de inspeccion")
+                  }
                   className="px-9 hover:text-primary"
                 >
                   Generar reporte
