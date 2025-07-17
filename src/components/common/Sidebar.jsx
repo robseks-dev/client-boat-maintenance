@@ -110,7 +110,7 @@ const Sidebar = () => {
                 </li>
               </ul>
             </li>
-            <li className="flex flex-col gap-2">
+            <li className="hidden sm:flex flex-col gap-2">
               <div className="group flex items-center justify-between rounded-sm p-2 cursor-default">
                 <div className="flex items-center gap-3">
                   <Cog strokeWidth={1.5} className="size-4" />
